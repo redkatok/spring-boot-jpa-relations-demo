@@ -7,9 +7,10 @@ spring:
       max-wait-millis: 30000
       validation-query: SELECT 1
       validation-query-timeout: 30
+
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     open-in-view: false
     properties:
       hibernate:
@@ -18,3 +19,8 @@ spring:
             non_contextual_creation: true
         id:
           new_generator_mappings: true
+
+logging:
+  level:
+    org.springframework.orm.jpa: debug
+    org.springframework.org.springframework.transaction: debug

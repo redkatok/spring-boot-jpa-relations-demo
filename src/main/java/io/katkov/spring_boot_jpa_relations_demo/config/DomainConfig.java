@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EntityScan("io.katkov.spring_boot_jpa_relations_demo.entity")
-@EnableJpaRepositories("io.katkov.spring_boot_jpa_relations_demo.domain.repository")
+@EnableJpaRepositories("io.katkov.spring_boot_jpa_relations_demo.repository")
 @EnableTransactionManagement
 public class DomainConfig {
 }
