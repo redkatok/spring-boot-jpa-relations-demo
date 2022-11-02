@@ -1,0 +1,32 @@
+logging:
+  level:
+    org:
+      springframework:
+        org:
+          springframework:
+            transaction: debug
+        orm:
+          jpa: debug
+spring:
+  datasource:
+    dbcp2:
+      max-wait-millis: 30000
+      validation-query: SELECT 1
+      validation-query-timeout: 30
+    password: ${JDBC_DATABASE_PASSWORD:admin}
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/demo_db}
+    username: ${JDBC_DATABASE_USERNAME:postgres}
+    hikari:
+      schema: jpa_relations
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    default-schema: jpa_relations
