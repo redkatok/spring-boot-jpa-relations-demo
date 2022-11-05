@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OptimisticLockType;
+import org.hibernate.annotations.OptimisticLocking;
+import org.springframework.data.annotation.Version;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,10 +24,13 @@ import javax.persistence.Table;
 @ToString
 @Builder
 @Table(name = "person")
+@OptimisticLocking(type = OptimisticLockType.VERSION)
 public class Person {
 
     @Id
     private Long id;
+    @Version
+    private Long version;
 
     private String firstName;
 

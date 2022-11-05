@@ -21,6 +21,7 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
+            <column name="version" type="bigint"/>
             <column name="first_name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
