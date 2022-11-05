@@ -38,6 +38,7 @@ public abstract class BaseJpaTest {
         registry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl);
         registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
         registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
+        registry.add("spring.datasource.hikari.schema", ()->"jpa_relations");
 
     }
 
