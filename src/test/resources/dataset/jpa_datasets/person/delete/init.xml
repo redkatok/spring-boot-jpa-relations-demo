@@ -1,4 +1,4 @@
 <dataset>
-    <person id="1" first_name="person" last_name="to_delete1"/>
-    <person id="2" first_name="person" last_name="to_delete2"/>
+    <person id="1" first_name="person" version="0" last_name="to_delete1"/>
+    <person id="2" first_name="person" version="0" last_name="to_delete2"/>
 </dataset>

@@ -1,4 +1,4 @@
-package beans.utility.jpa;
+package io.katkov.spring_boot_jpa_relations_demo.utils;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;

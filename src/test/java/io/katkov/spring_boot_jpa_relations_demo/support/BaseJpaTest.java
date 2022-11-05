@@ -1,12 +1,10 @@
 package io.katkov.spring_boot_jpa_relations_demo.support;
 
-import beans.utility.jpa.TransactionalRunner;
 import com.github.database.rider.junit5.api.DBRider;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -15,21 +13,21 @@ import org.testcontainers.utility.DockerImageName;
 @DataJpaTest(showSql = false)
 @EnableSqlLogging
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@ActiveProfiles("test")
+@Slf4j
 @DBRider
-@Import(TransactionalRunner.class)
 public abstract class BaseJpaTest {
 
     static final PostgreSQLContainer<?> postgreSQLContainer;
 
     static {
         postgreSQLContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:13"))
-            .withDatabaseName("test_database")
+            .withDatabaseName("test_database_jpa")
             .withUsername("postgres")
             .withPassword("postgres")
-            .withInitScript("init.sql")
-            .withLabel("group",
-                "jap_relations_testcontainer_db");
+            .withInitScript("init.sql");
         postgreSQLContainer.start();
+        log.info("Docker container start by BaseJpaTest");
     }
 
     @DynamicPropertySource
