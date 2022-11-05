@@ -1,5 +1,7 @@
 package io.katkov.spring_boot_jpa_relations_demo.support;
 
+import com.github.database.rider.core.api.configuration.DBUnit;
+import com.github.database.rider.core.api.configuration.Orthography;
 import com.github.database.rider.junit5.api.DBRider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -16,6 +18,7 @@ import org.testcontainers.utility.DockerImageName;
 @ActiveProfiles("test")
 @Slf4j
 @DBRider
+@DBUnit(cacheConnection = false, leakHunter = true, caseInsensitiveStrategy = Orthography.LOWERCASE)
 public abstract class BaseJpaTest {
 
     static final PostgreSQLContainer<?> postgreSQLContainer;
