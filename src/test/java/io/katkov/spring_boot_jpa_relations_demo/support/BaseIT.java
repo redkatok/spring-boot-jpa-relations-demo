@@ -24,10 +24,8 @@ public abstract class BaseIT {
 
     static {
         postgreSQLContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:13"))
-            .withDatabaseName("test_database_it")
-            .withUsername("postgres")
-            .withPassword("postgres")
-            .withInitScript("init.sql");
+            .withDatabaseName("postgres")
+            .withInitScript("sql/init-for-docker-compose.sql");
         postgreSQLContainer.start();
         log.info("Docker container start by BaseIT");
     }
@@ -37,6 +35,7 @@ public abstract class BaseIT {
         registry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl);
         registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
         registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
+        registry.add("spring.liquibase.url", () -> postgreSQLContainer.getJdbcUrl());
         registry.add("spring.datasource.hikari.schema", ()->"jpa_relations");
     }
 

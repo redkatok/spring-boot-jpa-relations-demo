@@ -13,9 +13,9 @@ spring:
       max-wait-millis: 30000
       validation-query: SELECT 1
       validation-query-timeout: 30
-    password: ${JDBC_DATABASE_PASSWORD:admin}
-    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/demo_db}
-    username: ${JDBC_DATABASE_USERNAME:postgres}
+    password: ${JDBC_DATABASE_PASSWORD:jpa_relations_ms}
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/postgres?currentSchema=jpa_relations}
+    username: ${JDBC_DATABASE_USERNAME:jpa_relations_ms}
     hikari:
       schema: jpa_relations
   jpa:
@@ -30,3 +30,5 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
     default-schema: jpa_relations
+    user: jpa_relations
+    password: jpa_relations
