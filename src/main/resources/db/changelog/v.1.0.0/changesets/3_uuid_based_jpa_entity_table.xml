@@ -17,12 +17,12 @@
         <comment>Таблица uuid_based_jpa_entity</comment>
 
         <createTable tableName="uuid_based_jpa_entity">
-<!--            defaultValueComputed="pg_catalog.gen_random_uuid()" - работает только если postgres выше 13 версии-->
+            <!--            defaultValueComputed="pg_catalog.gen_random_uuid()" - работает только если postgres выше 13 версии-->
             <column name="id" type="uuid" defaultValueComputed="uuid_generate_v4()">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_uuid_based_jpa_entity"/>
             </column>
             <column name="name" type="varchar"/>
-            <column name="somecol" type="uuid" defaultValueComputed="uuid_generate_v4()"/>
+            <column name="somecol" type="uuid"/>
         </createTable>
 
     </changeSet>
