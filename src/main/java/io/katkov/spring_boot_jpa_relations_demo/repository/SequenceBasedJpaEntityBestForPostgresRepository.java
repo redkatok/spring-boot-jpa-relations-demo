@@ -1,0 +1,7 @@
+package io.katkov.spring_boot_jpa_relations_demo.repository;
+
+import io.katkov.spring_boot_jpa_relations_demo.entity._4_les_sequence_strategy_best_for_postgres.SequenceBasedJpaEntityBestForPostgres;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SequenceBasedJpaEntityBestForPostgresRepository extends JpaRepository<SequenceBasedJpaEntityBestForPostgres, Long> {
+}

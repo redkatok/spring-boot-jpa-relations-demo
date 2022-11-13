@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+
+    <changeSet id="v.1.0.0.0_create_sequence_based_jpa_entity_best_for_postgres_table" author="demo_author">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sequence_based_jpa_entity_best_for_postgres"/>
+            </not>
+            <not>
+                <sequenceExists sequenceName="sequence_based_jpa_entity_best_for_postgres_id_seq"/>
+            </not>
+        </preConditions>
+
+        <comment>Таблица auto_incremented_by_db_big_int_jpa_entity</comment>
+
+        <createTable tableName="sequence_based_jpa_entity_best_for_postgres">
+            <column name="id" type="bigint" >
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar"/>
+        </createTable>
+
+
+        <comment>Сиквенс sequence_based_jpa_entity_best_for_postgres_id_seq </comment>
+        <createSequence sequenceName="sequence_based_jpa_entity_best_for_postgres_id_seq"/>
+
+    </changeSet>
+
+
+</databaseChangeLog>

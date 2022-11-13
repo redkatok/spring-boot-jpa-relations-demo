@@ -1,0 +1,3 @@
+<dataset>
+    <sequence_based_jpa_entity_best_for_postgres name="savesequencebasedentity"/>
+</dataset>
