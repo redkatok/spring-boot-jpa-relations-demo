@@ -1,0 +1,7 @@
+package io.katkov.spring_boot_jpa_relations_demo.repository;
+
+import io.katkov.spring_boot_jpa_relations_demo.entity._2_les_bigint_strategy_identity_demo.AutoIncrementedByDbBigIntJpaEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AutoIncrementedByDbBigIntJpaEntityRepository extends JpaRepository<AutoIncrementedByDbBigIntJpaEntity, Long> {
+}

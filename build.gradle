@@ -58,6 +58,8 @@ dependencies {
     testImplementation "com.github.database-rider:rider-junit5:${DATABASE_RIDER_JUNIT_JUPITER_VERSION}"
     testImplementation "com.github.gavlyukovskiy:p6spy-spring-boot-starter:${P6SPY_SPRING_BOOT_STARTER}"
 
+    implementation("com.vladmihalcea:hibernate-types-52:2.20.0")
+
 
 }
 

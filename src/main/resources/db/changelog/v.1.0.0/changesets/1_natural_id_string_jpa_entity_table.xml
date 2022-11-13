@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+
+    <changeSet id="v.1.0.0.0_create_natural_id_string_jpa_entity_table" author="demo_author">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="natural_id_string_jpa_entity"/>
+            </not>
+        </preConditions>
+
+        <comment>Таблица natural_id_string_jpa_entity</comment>
+
+        <createTable tableName="natural_id_string_jpa_entity">
+
+            <column name="id" type="varchar">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="name" type="varchar"/>
+
+        </createTable>
+
+
+    </changeSet>
+
+
+</databaseChangeLog>

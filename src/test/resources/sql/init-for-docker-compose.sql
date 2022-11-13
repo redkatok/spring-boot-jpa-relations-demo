@@ -6,6 +6,8 @@ CREATE USER jpa_relations_ms WITH password 'jpa_relations_ms';
 
 -- create schema
 CREATE SCHEMA jpa_relations AUTHORIZATION jpa_relations;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" schema jpa_relations;
+
 
 GRANT USAGE ON SCHEMA jpa_relations TO jpa_relations_ms;
 

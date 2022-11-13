@@ -24,6 +24,7 @@ public abstract class BaseJpaTest {
 
     static final PostgreSQLContainer<?> postgreSQLContainer;
 
+
     static {
         postgreSQLContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:13"))
             .withDatabaseName("postgres")
