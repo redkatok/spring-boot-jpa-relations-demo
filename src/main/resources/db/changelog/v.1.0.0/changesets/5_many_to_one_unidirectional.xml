@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+
+    <changeSet id="v.1.0.0.0_create_many_to_one_unidirectional_relationship" author="demo_author">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="item"/>
+                <tableExists tableName="box"/>
+            </not>
+        </preConditions>
+
+        <comment>Таблица item</comment>
+
+        <createTable tableName="box">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_box"/>
+            </column>
+
+            <column name="name" type="varchar"/>
+        </createTable>
+
+        <createTable tableName="item">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_item"/>
+            </column>
+
+            <column name="name" type="varchar"/>
+            <column name="box_id" type="uuid"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="item" baseColumnNames="box_id" constraintName="fk_item_to_box"
+                                 referencedTableName="box"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+
+
+</databaseChangeLog>
