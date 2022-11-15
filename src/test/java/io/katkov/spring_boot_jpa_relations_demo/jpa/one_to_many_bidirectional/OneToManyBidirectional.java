@@ -13,7 +13,7 @@ import org.springframework.test.context.transaction.TestTransaction;
 import java.util.List;
 
 @Slf4j
-public class OneToManyDidirectional extends BaseJpaTest {
+public class OneToManyBidirectional extends BaseJpaTest {
 
     @Autowired
     private LegoConstructorBiDirectionalRepository legoConstructorBiDirectionalRepository;
