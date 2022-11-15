@@ -4,11 +4,13 @@ import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 import io.katkov.spring_boot_jpa_relations_demo.entity._5_les_many_to_one_unidirectional.Box;
 import io.katkov.spring_boot_jpa_relations_demo.entity._5_les_many_to_one_unidirectional.Item;
+import io.katkov.spring_boot_jpa_relations_demo.entity._5_les_many_to_one_unidirectional.cascaded.BoxUnderCascadeAll;
+import io.katkov.spring_boot_jpa_relations_demo.entity._5_les_many_to_one_unidirectional.cascaded.ItemWithCascadeAllToBox;
 import io.katkov.spring_boot_jpa_relations_demo.repository.BoxRepository;
 import io.katkov.spring_boot_jpa_relations_demo.repository.ItemRepository;
+import io.katkov.spring_boot_jpa_relations_demo.repository.cascaded.ItemCascadedRepository;
 import io.katkov.spring_boot_jpa_relations_demo.support.BaseJpaTest;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.TransientPropertyValueException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +30,9 @@ public class ManyToOneTest extends BaseJpaTest {
     private ItemRepository itemRepository;
 
 
+
     /**
-     * будет эксепшн так как box на момент установки связи отсутвует в бд
+     * будет эксепшн так как box на момент установки связи отсутствует в бд
      */
     @Test
     void save_Box_And_items_incorrect_saving() {
@@ -76,5 +79,33 @@ public class ManyToOneTest extends BaseJpaTest {
         TestTransaction.flagForCommit();
         TestTransaction.end();
     }
+
+    @Test
+    @DataSet(value = "dataset/jpa_datasets/many_to_one_unidirectional/findbyid/box/init.xml",
+        cleanBefore = true)
+    @ExpectedDataSet(value = "dataset/jpa_datasets/many_to_one_unidirectional/create/expected.xml")
+    void findById_box() {
+        Optional<Box> byId = boxRepository.findById(UUID.fromString("a401d079-d4ff-42b1-a34b-78af2dbb4aa9"));
+        log.info("комит транзакции флажок");
+        TestTransaction.flagForCommit();
+        TestTransaction.end();
+    }
+
+    @Test
+    @DataSet(value = "dataset/jpa_datasets/many_to_one_unidirectional/findbyid/item/init.xml",
+        cleanBefore = true)
+    void findById_item() {
+        itemRepository.findById(UUID.fromString("a401d079-d4ff-42b1-a34b-78af2dbb4aa9"));
+        log.info("комит транзакции флажок");
+        TestTransaction.flagForCommit();
+        TestTransaction.end();
+    }
+
+
+
+
+
+
+
 
 }

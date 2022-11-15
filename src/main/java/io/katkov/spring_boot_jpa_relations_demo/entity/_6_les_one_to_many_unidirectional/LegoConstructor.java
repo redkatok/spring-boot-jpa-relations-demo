@@ -1,5 +1,4 @@
-package io.katkov.spring_boot_jpa_relations_demo.entity._5_les_many_to_one_unidirectional;
-
+package io.katkov.spring_boot_jpa_relations_demo.entity._6_les_one_to_many_unidirectional;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -7,26 +6,25 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
+import java.util.List;
 import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "jpa_relations", name = "item")
-@ToString(exclude = "company")
+@Table(schema = "jpa_relations", name = "lego_constructor")
 @Builder
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor
 @Setter
 @Getter
-public class Item {
+public class LegoConstructor {
 
     @Id
     @GeneratedValue
@@ -34,10 +32,7 @@ public class Item {
 
     private String name;
 
-//    optional регулирует вид джоина - false=inner true=left
-    @ManyToOne(optional = false,fetch = FetchType.LAZY)
-    @JoinColumn(name="box_id")
-    private Box box;
-
-
+    @OneToMany
+    @JoinColumn(name = "lego_constructor_id")
+    private List<LegoBlock> legoBlocks;
 }

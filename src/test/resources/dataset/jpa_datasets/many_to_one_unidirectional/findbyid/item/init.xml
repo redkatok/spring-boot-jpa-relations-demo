@@ -1,0 +1,6 @@
+<dataset>
+
+    <box id="a401d079-d4ff-42b1-a34b-78af2dbb4aa8" name="box1"/>
+
+    <item id="a401d079-d4ff-42b1-a34b-78af2dbb4aa8" name="item1" box_id="a401d079-d4ff-42b1-a34b-78af2dbb4aa8"/>
+</dataset>

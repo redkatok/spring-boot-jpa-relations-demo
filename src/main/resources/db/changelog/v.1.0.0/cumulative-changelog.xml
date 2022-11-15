@@ -16,5 +16,6 @@
     <include file="changesets/3_uuid_based_jpa_entity_table.xml" relativeToChangelogFile="true"/>
     <include file="changesets/4_sequence_based_jpa_entity_best_for_postgres_table.xml" relativeToChangelogFile="true"/>
     <include file="changesets/5_many_to_one_unidirectional.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/6_one_to_many_unidirectional.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
