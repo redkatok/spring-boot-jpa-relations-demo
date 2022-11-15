@@ -28,8 +28,8 @@ public class OneToManyDidirectional extends BaseJpaTest {
         LegoConstructorBiDirectional legoConstructor = LegoConstructorBiDirectional.builder().name("Some LegoConstructor").build();
 
         LegoBlockBidirectional legoBlock1 = LegoBlockBidirectional.builder().name("some block 1").build();
-        LegoBlockBidirectional legoBlock2 = LegoBlockBidirectional.builder().name("some block 1").build();
-        LegoBlockBidirectional legoBlock3 = LegoBlockBidirectional.builder().name("some block 1").build();
+        LegoBlockBidirectional legoBlock2 = LegoBlockBidirectional.builder().name("some block 2").build();
+        LegoBlockBidirectional legoBlock3 = LegoBlockBidirectional.builder().name("some block 3").build();
         List<LegoBlockBidirectional> legoBlocks = List.of(legoBlock1, legoBlock2, legoBlock3);
         legoConstructor.setLegoBlocks(legoBlocks);
 
@@ -50,8 +50,8 @@ public class OneToManyDidirectional extends BaseJpaTest {
         LegoConstructorBiDirectional legoConstructor = LegoConstructorBiDirectional.builder().name("Some LegoConstructor").build();
 
         LegoBlockBidirectional legoBlock1 = LegoBlockBidirectional.builder().name("some block 1").build();
-        LegoBlockBidirectional legoBlock2 = LegoBlockBidirectional.builder().name("some block 1").build();
-        LegoBlockBidirectional legoBlock3 = LegoBlockBidirectional.builder().name("some block 1").build();
+        LegoBlockBidirectional legoBlock2 = LegoBlockBidirectional.builder().name("some block 2").build();
+        LegoBlockBidirectional legoBlock3 = LegoBlockBidirectional.builder().name("some block 3").build();
         List<LegoBlockBidirectional> legoBlocks = List.of(legoBlock1, legoBlock2, legoBlock3);
         legoConstructor.addLegoBlocks(legoBlocks);
 

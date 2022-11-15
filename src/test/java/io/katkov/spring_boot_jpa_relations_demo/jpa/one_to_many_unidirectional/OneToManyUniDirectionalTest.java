@@ -31,8 +31,8 @@ public class OneToManyUniDirectionalTest extends BaseJpaTest {
         LegoConstructor legoConstructor = LegoConstructor.builder().name("Some LegoConstructor").build();
 
         LegoBlock legoBlock1 = LegoBlock.builder().name("some block 1").build();
-        LegoBlock legoBlock2 = LegoBlock.builder().name("some block 1").build();
-        LegoBlock legoBlock3 = LegoBlock.builder().name("some block 1").build();
+        LegoBlock legoBlock2 = LegoBlock.builder().name("some block 2").build();
+        LegoBlock legoBlock3 = LegoBlock.builder().name("some block 3").build();
 
         List<LegoBlock> legoBlocks = List.of(legoBlock1, legoBlock2, legoBlock3);
         legoBlockJpaRepository.saveAll(legoBlocks);

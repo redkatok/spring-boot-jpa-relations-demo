@@ -25,8 +25,8 @@ public class OneToManyUnidirectionalCascaded extends BaseJpaTest {
         LegoConstructorCascaded legoConstructor = LegoConstructorCascaded.builder().name("Some LegoConstructor").build();
 
         LegoBlockUnderCascade legoBlock1 = LegoBlockUnderCascade.builder().name("some block 1").build();
-        LegoBlockUnderCascade legoBlock2 = LegoBlockUnderCascade.builder().name("some block 1").build();
-        LegoBlockUnderCascade legoBlock3 = LegoBlockUnderCascade.builder().name("some block 1").build();
+        LegoBlockUnderCascade legoBlock2 = LegoBlockUnderCascade.builder().name("some block 2").build();
+        LegoBlockUnderCascade legoBlock3 = LegoBlockUnderCascade.builder().name("some block 3").build();
         List<LegoBlockUnderCascade> legoBlocks = List.of(legoBlock1, legoBlock2, legoBlock3);
         legoConstructor.setLegoBlocks(legoBlocks);
 
