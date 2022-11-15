@@ -19,7 +19,7 @@ public class OneToManyBidirectional extends BaseJpaTest {
     private LegoConstructorBiDirectionalRepository legoConstructorBiDirectionalRepository;
 
     /**
-     * все сохранится но внещние ключи в легоблоках не проставятся
+     * все сохранится НО внещние ключи в легоблоках НЕ ПРОСТАВЯТСЯ
      */
     @DataSet(cleanBefore = true)
     @Test
@@ -41,7 +41,7 @@ public class OneToManyBidirectional extends BaseJpaTest {
     }
 
     /**
-     * все сохранится но внешние ключи в легоблоках не проставятся
+     * все сохранится и внешние ключи в легоблоках  ПРОСТАВЯТСЯ
      */
     @DataSet(cleanBefore = true)
     @Test
