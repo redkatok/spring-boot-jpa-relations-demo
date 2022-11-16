@@ -11,9 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.transaction.TestTransaction;
 
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
-public class OneToManyBidirectional extends BaseJpaTest {
+class OneToManyBidirectional extends BaseJpaTest {
 
     @Autowired
     private LegoConstructorBiDirectionalRepository legoConstructorBiDirectionalRepository;
@@ -61,4 +62,27 @@ public class OneToManyBidirectional extends BaseJpaTest {
         TestTransaction.flagForCommit();
         TestTransaction.end();
     }
+
+    @Test
+    @DataSet(value = "dataset/jpa_datasets/one_to_many_bidirectional/findById/init.xml",
+        cleanBefore = true)
+    void find_constructor_by_id() {
+        legoConstructorBiDirectionalRepository.findById(UUID.fromString("93147495-d109-45e9-bd5a-f5297a16e3e1"));
+
+        log.info("комит транзакции флажок");
+        TestTransaction.flagForCommit();
+        TestTransaction.end();
+    }
+
+    @Test
+    @DataSet(value = "dataset/jpa_datasets/one_to_many_bidirectional/findById/init.xml",
+        cleanBefore = true)
+    void lego_constructor_findByNameCustom() {
+        legoConstructorBiDirectionalRepository.findByNameCustom("some LegoConstructor");
+
+        log.info("комит транзакции флажок");
+        TestTransaction.flagForCommit();
+        TestTransaction.end();
+    }
+
 }

@@ -11,7 +11,10 @@ import io.katkov.spring_boot_jpa_relations_demo.repository.ItemRepository;
 import io.katkov.spring_boot_jpa_relations_demo.repository.cascaded.ItemCascadedRepository;
 import io.katkov.spring_boot_jpa_relations_demo.support.BaseJpaTest;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -28,7 +31,6 @@ public class ManyToOneTest extends BaseJpaTest {
 
     @Autowired
     private ItemRepository itemRepository;
-
 
 
     /**
@@ -96,6 +98,50 @@ public class ManyToOneTest extends BaseJpaTest {
         cleanBefore = true)
     void findById_item() {
         itemRepository.findById(UUID.fromString("a401d079-d4ff-42b1-a34b-78af2dbb4aa9"));
+        log.info("комит транзакции флажок");
+        TestTransaction.flagForCommit();
+        TestTransaction.end();
+    }
+
+    /**
+     * 1 запрос. решено через entity graph.
+     */
+    @Test
+    @DataSet(value = "dataset/jpa_datasets/many_to_one_unidirectional/findbyid/item/init.xml",
+        cleanBefore = true)
+    void findAll_item() {
+        log.info("test начало");
+
+        itemRepository.findAll();
+        log.info("комит транзакции флажок");
+        TestTransaction.flagForCommit();
+        TestTransaction.end();
+
+        log.info("test конец");
+    }
+
+
+    /**
+     * за 2 селекта вытащит данные - n+1 problem.один select на item , второй на связанный с ним eager
+     */
+    @Test
+    @DataSet(value = "dataset/jpa_datasets/many_to_one_unidirectional/findbyid/item/init.xml",
+        cleanBefore = true)
+    void item_findByName() {
+        itemRepository.findByName("item1");
+        log.info("комит транзакции флажок");
+        TestTransaction.flagForCommit();
+        TestTransaction.end();
+    }
+
+    /**
+     * за 1 select вытащит данные - n+1 решается через join fetch
+     */
+    @Test
+    @DataSet(value = "dataset/jpa_datasets/many_to_one_unidirectional/findbyid/item/init.xml",
+        cleanBefore = true)
+    void item_findByNameCustom() {
+        itemRepository.findByNameCustom("item1");
         log.info("комит транзакции флажок");
         TestTransaction.flagForCommit();
         TestTransaction.end();

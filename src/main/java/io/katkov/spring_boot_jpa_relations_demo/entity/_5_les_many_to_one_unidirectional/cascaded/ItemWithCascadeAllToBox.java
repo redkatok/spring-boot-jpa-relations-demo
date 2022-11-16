@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(schema = "jpa_relations", name = "item")
-@ToString(exclude = "company")
+@ToString(exclude = "box")
 @Builder
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor

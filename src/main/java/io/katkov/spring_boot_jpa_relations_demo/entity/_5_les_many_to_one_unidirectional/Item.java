@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(schema = "jpa_relations", name = "item")
-@ToString(exclude = "company")
+@ToString(exclude = "box")
 @Builder
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor
@@ -35,7 +35,7 @@ public class Item {
     private String name;
 
 //    optional регулирует вид джоина - false=inner true=left
-    @ManyToOne(optional = false,fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name="box_id")
     private Box box;
 
