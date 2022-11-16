@@ -12,7 +12,7 @@ public interface ItemRepository extends JpaRepository<Item, UUID> {
 
     List<Item> findByName(String name);
 
-    @Query(value = "select i from Item i join fetch  i.box")
+    @Query(value = "select i from Item i join fetch  i.box where i.name=:name")
     List<Item> findByNameCustom(String name);
 
     @EntityGraph(

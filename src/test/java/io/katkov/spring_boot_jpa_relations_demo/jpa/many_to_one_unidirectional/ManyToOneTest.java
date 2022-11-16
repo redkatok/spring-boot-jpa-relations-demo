@@ -32,7 +32,6 @@ public class ManyToOneTest extends BaseJpaTest {
     @Autowired
     private ItemRepository itemRepository;
 
-
     /**
      * будет эксепшн так как box на момент установки связи отсутствует в бд
      */
@@ -120,7 +119,6 @@ public class ManyToOneTest extends BaseJpaTest {
         log.info("test конец");
     }
 
-
     /**
      * за 2 селекта вытащит данные - n+1 problem.один select на item , второй на связанный с ним eager
      */
@@ -146,12 +144,5 @@ public class ManyToOneTest extends BaseJpaTest {
         TestTransaction.flagForCommit();
         TestTransaction.end();
     }
-
-
-
-
-
-
-
 
 }
