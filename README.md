@@ -31,3 +31,8 @@ java -Dspring.profiles.active=production -jar ./build/libs/spring-boot-jpa-relat
 * [Gradle user manual](https://docs.gradle.org/)  
 * [Spring Boot reference](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)  
 * [Spring Data JPA reference](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)  
+
+
+https://github.com/barrelsofdata/spring-telemetry-receiver 
+
+read to understand sonar and
