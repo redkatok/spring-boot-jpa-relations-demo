@@ -110,7 +110,6 @@ public class ManyToOneTest extends BaseJpaTest {
         cleanBefore = true)
     void findAll_item() {
         log.info("test начало");
-
         itemRepository.findAll();
         log.info("комит транзакции флажок");
         TestTransaction.flagForCommit();
