@@ -1,1 +1,0 @@
-create schema jpa_relations;

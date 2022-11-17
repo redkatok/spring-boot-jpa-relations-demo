@@ -1,0 +1,10 @@
+<dataset>
+    <lego_constructor id="93147495-d109-45e9-bd5a-f5297a16e3e1" name="some LegoConstructor"/>
+
+    <lego_block id="2f28079d-207b-4a4c-a2af-2c7d963aaf7d" name="some block 1"
+                lego_constructor_id="93147495-d109-45e9-bd5a-f5297a16e3e1"/>
+    <lego_block id="fe28e795-9226-497b-8660-ddf0cbff2865" name="some block 2"
+                lego_constructor_id="93147495-d109-45e9-bd5a-f5297a16e3e1"/>
+    <lego_block id="3faf8f10-92b9-46da-a245-1a745061c41b" name="some block 3"
+                lego_constructor_id="93147495-d109-45e9-bd5a-f5297a16e3e1"/>
+</dataset>

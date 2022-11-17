@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+
+    <changeSet id="v.1.0.0.0_create_oen_to_many_unidirectional_relationship" author="demo_author">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="constructor"/>
+                <tableExists tableName="lego_block"/>
+            </not>
+        </preConditions>
+
+        <comment>Таблица constructor/lego_block</comment>
+
+        <createTable tableName="lego_constructor">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_lego_constructor"/>
+            </column>
+
+            <column name="name" type="varchar"/>
+        </createTable>
+
+
+        <createTable tableName="lego_block">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_lego_block"/>
+            </column>
+
+            <column name="name" type="varchar"/>
+            <column name="lego_constructor_id" type="uuid"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="lego_block" baseColumnNames="lego_constructor_id"
+                                 constraintName="fk_lego_block_to_to_lego_constructor"
+                                 referencedTableName="lego_constructor"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+
+
+</databaseChangeLog>

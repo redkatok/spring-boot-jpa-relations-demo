@@ -6,27 +6,24 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
 
-    <changeSet id="v.1.0.0.0_create_person_table" author="demo_author">
+    <changeSet id="v.1.0.0.0_create_natural_id_string_jpa_entity_table" author="demo_author">
 
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="person"/>
+                <tableExists tableName="natural_id_string_jpa_entity"/>
             </not>
         </preConditions>
 
-        <comment>Таблица Person</comment>
+        <comment>Таблица natural_id_string_jpa_entity</comment>
 
-        <createTable tableName="person">
+        <createTable tableName="natural_id_string_jpa_entity">
 
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="id" type="varchar">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="first_name" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="last_name" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
+
+            <column name="name" type="varchar"/>
+
         </createTable>
 
 

@@ -10,6 +10,12 @@
         <tagDatabase tag="v.1.0.0"/>
     </changeSet>
 
-    <include file="changesets/1_create_table_person.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/0_create_table_person.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/1_natural_id_string_jpa_entity_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/2_auto_incremented_by_db_big_int_jpa_entity_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/3_uuid_based_jpa_entity_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/4_sequence_based_jpa_entity_best_for_postgres_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/5_many_to_one_unidirectional.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/6_one_to_many_unidirectional.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
