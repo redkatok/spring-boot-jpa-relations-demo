@@ -1,5 +1,6 @@
 <dataset>
-    <lego_constructor id="93147495-d109-45e9-bd5a-f5297a16e3e1" name="some LegoConstructor"/>
+    <lego_constructor id="93147495-d109-45e9-bd5a-f5297a16e3e1" name="some LegoConstructor 1"/>
+    <lego_constructor id="5e59fb79-c5b2-4c01-9512-c8dd0e0fa6a6" name="some LegoConstructor 2"/>
 
     <lego_block id="2f28079d-207b-4a4c-a2af-2c7d963aaf7d" name="some block 1"
                 lego_constructor_id="93147495-d109-45e9-bd5a-f5297a16e3e1"/>
@@ -7,4 +8,12 @@
                 lego_constructor_id="93147495-d109-45e9-bd5a-f5297a16e3e1"/>
     <lego_block id="3faf8f10-92b9-46da-a245-1a745061c41b" name="some block 3"
                 lego_constructor_id="93147495-d109-45e9-bd5a-f5297a16e3e1"/>
+
+
+    <lego_block id="b5a2bc76-1ff7-4545-8587-6013499ddb84" name="some block 1"
+                lego_constructor_id="5e59fb79-c5b2-4c01-9512-c8dd0e0fa6a6"/>
+    <lego_block id="b21d2a72-e3c4-43a4-b47d-b71a51fae7db" name="some block 2"
+                lego_constructor_id="5e59fb79-c5b2-4c01-9512-c8dd0e0fa6a6"/>
+    <lego_block id="523c80eb-ca7f-41c4-a4a2-5eeb249ec988" name="some block 3"
+                lego_constructor_id="5e59fb79-c5b2-4c01-9512-c8dd0e0fa6a6"/>
 </dataset>

@@ -1,6 +1,7 @@
 package io.katkov.spring_boot_jpa_relations_demo.jpa.one_to_many_unidirectional;
 
 import com.github.database.rider.core.api.dataset.DataSet;
+import com.yannbriancon.interceptor.HibernateQueryInterceptor;
 import io.katkov.spring_boot_jpa_relations_demo.entity._6_les_one_to_many_unidirectional.LegoBlock;
 import io.katkov.spring_boot_jpa_relations_demo.entity._6_les_one_to_many_unidirectional.LegoConstructor;
 import io.katkov.spring_boot_jpa_relations_demo.repository.LegoConstructorJpaRepository;
@@ -13,9 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.context.transaction.TestTransaction;
 
+import javax.persistence.EntityManager;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Slf4j
 public class OneToManyUniDirectionalTest extends BaseJpaTest {
@@ -23,6 +23,10 @@ public class OneToManyUniDirectionalTest extends BaseJpaTest {
     private LegoConstructorJpaRepository legoConstructorJpaRepository;
     @Autowired
     private LegoBlockJpaRepository legoBlockJpaRepository;
+    @Autowired
+    private HibernateQueryInterceptor hibernateQueryInterceptor;
+    @Autowired
+    private  EntityManager entityManager;
 
     @DataSet(cleanBefore = true)
     @Test
@@ -69,8 +73,11 @@ public class OneToManyUniDirectionalTest extends BaseJpaTest {
 
     @DataSet(cleanBefore = true, value = "dataset/jpa_datasets/one_to_many_unidirectional/findbyid/init.xml")
     @Test
-    void findById_Lego_Constructor() {
-        Optional<LegoConstructor> legoConstructor = legoConstructorJpaRepository.findById(UUID.fromString("93147495-d109-45e9-bd5a-f5297a16e3e1"));
+    void findAll_lego_constructors_with_legoblocks() {
+        hibernateQueryInterceptor.clearNPlusOneQuerySession(entityManager);
+        List<LegoConstructor> all = legoConstructorJpaRepository.findAll();
+        List<List<LegoBlock>> list = all.stream().map(constr -> constr.getLegoBlocks()).toList();
+        System.out.println(list);
     }
 
 }

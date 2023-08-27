@@ -3,10 +3,15 @@ package io.katkov.spring_boot_jpa_relations_demo.support;
 import com.github.database.rider.core.api.configuration.DBUnit;
 import com.github.database.rider.core.api.configuration.Orthography;
 import com.github.database.rider.junit5.api.DBRider;
+import com.yannbriancon.interceptor.HibernateQueryInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -20,6 +25,7 @@ import org.testcontainers.utility.DockerImageName;
 @Slf4j
 @DBRider
 @DBUnit(cacheConnection = false, caseInsensitiveStrategy = Orthography.LOWERCASE)
+@ComponentScan(basePackages = "com.yannbriancon")
 public abstract class BaseJpaTest {
 
     static final PostgreSQLContainer<?> postgreSQLContainer;
@@ -41,5 +47,4 @@ public abstract class BaseJpaTest {
         registry.add("spring.liquibase.url", () -> postgreSQLContainer.getJdbcUrl());
         registry.add("spring.datasource.hikari.schema", ()->"jpa_relations");
     }
-
 }

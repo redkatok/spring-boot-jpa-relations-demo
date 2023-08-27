@@ -8,10 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(schema = "jpa_relations", name = "lego_block")
